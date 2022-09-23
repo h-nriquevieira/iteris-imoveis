@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import MenuPage from "./pages/MenuPage";
+import { CssBaseline } from "@mui/material";
+import ImoveisPage from "./pages/ImoveisPage";
+import ImovelSinglePage from "./pages/ImovelSinglePage/ImovelSinglePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <CssBaseline />
+      <MenuPage>
+        <Routes>
+          <Route path='/' element={<p>Home</p>} />
+          <Route path='/imoveis' element={<ImoveisPage />} />
+          <Route path='/sobre' element={<p>Sobre</p>} />
+          <Route path='/imoveis/:id' element={<ImovelSinglePage />} />
+        </Routes>
+      </MenuPage>
+    </BrowserRouter>
   );
 }
 
